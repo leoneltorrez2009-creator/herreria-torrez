@@ -37,37 +37,52 @@
             background: transparent;
             color: var(--text-secondary);
             border: 1px solid var(--border-color);
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 4px;
             cursor: pointer;
             transition: 0.2s;
         }
         .btn-admin-login:hover { color: #fff; border-color: var(--accent-gold); }
 
-        /* PANEL ADMIN */
+        /* PANEL ADMIN (MEJORADO Y MÁS CÓMODO PARA CELULAR) */
         #admin-panel {
             display: none;
             background: var(--bg-surface);
-            padding: 15px;
-            text-align: center;
+            padding: 20px;
             border-bottom: 2px solid var(--accent-gold);
+            text-align: center;
         }
         body.admin-mode #admin-panel { display: block; }
+        
+        .admin-controls-group {
+            background: #14171d;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .admin-controls-group h4 { color: var(--accent-gold); margin-bottom: 10px; font-size: 1rem; }
+
         .btn-panel {
             background: var(--accent-blue);
             color: #fff;
             border: none;
-            padding: 8px 16px;
+            padding: 10px 18px;
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
-            margin: 4px;
+            margin: 5px;
+            font-size: 0.95rem;
         }
 
-        /* HERO / BANNER PRINCIPAL CON EFECTO PROFESIONAL */
+        /* HERO / BANNER PRINCIPAL */
         .hero {
             position: relative;
-            background: linear-gradient(rgba(15, 17, 21, 0.7), rgba(15, 17, 21, 0.95)), url('https://i.postimg.cc/q76pPT7V/1790305937565.png') center/cover no-repeat;
+            background: linear-gradient(rgba(15, 17, 21, 0.7), rgba(15, 17, 21, 0.95)), center/cover no-repeat;
             padding: 70px 20px;
             text-align: center;
             border-bottom: 3px solid var(--accent-gold);
@@ -87,7 +102,6 @@
             align-items: center;
             gap: 8px;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-            transition: 0.3s;
         }
         .btn-maps {
             background: #ea4335;
@@ -116,7 +130,7 @@
         .value-card h4 { font-size: 1rem; color: #fff; }
         .value-card p { font-size: 0.85rem; color: var(--text-secondary); }
 
-        /* SECCIÓN "EL PROCESO Y LA CALIDAD" (EFECTO WOW) */
+        /* SECCIÓN "EL PROCESO Y LA CALIDAD" (AHORA EDITABLE) */
         .process-section {
             max-width: 1200px;
             margin: 60px auto;
@@ -136,14 +150,15 @@
             border-radius: 10px;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .process-card:hover { transform: translateY(-8px); border-color: var(--accent-gold); }
         .process-card img { width: 100%; height: 220px; object-fit: cover; }
-        .process-content { padding: 20px; }
+        .process-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
         .process-content h3 { font-size: 1.3rem; color: #fff; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
         .process-content h3 span { background: var(--accent-gold); color: #000; width: 28px; height: 28px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 0.9rem; font-weight: bold; }
-        .process-content p { font-size: 0.95rem; color: var(--text-secondary); }
+        .process-content p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 15px; }
 
         /* CATÁLOGO DE PRODUCTOS */
         .catalog-container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
@@ -193,8 +208,8 @@
         }
 
         .admin-actions { display: flex; gap: 10px; margin-top: 12px; }
-        .btn-edit { background: #e67e22; color: white; border: none; padding: 6px; border-radius: 4px; flex: 1; cursor: pointer; }
-        .btn-delete { background: #e74c3c; color: white; border: none; padding: 6px; border-radius: 4px; flex: 1; cursor: pointer; }
+        .btn-edit { background: #e67e22; color: white; border: none; padding: 8px; border-radius: 4px; flex: 1; cursor: pointer; font-weight: bold; }
+        .btn-delete { background: #e74c3c; color: white; border: none; padding: 8px; border-radius: 4px; flex: 1; cursor: pointer; font-weight: bold; }
 
         /* MODALES */
         .modal {
@@ -215,14 +230,14 @@
             max-width: 500px;
             border: 1px solid var(--accent-gold);
         }
-        .form-group { margin-bottom: 12px; }
-        .form-group label { display: block; margin-bottom: 4px; font-size: 0.85rem; color: var(--text-secondary); }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 6px; font-size: 0.9rem; color: var(--text-secondary); font-weight: bold; }
         .form-group input, .form-group textarea {
-            width: 100%; padding: 10px; background: #0f1115; border: 1px solid var(--border-color); color: #fff; border-radius: 5px;
+            width: 100%; padding: 12px; background: #0f1115; border: 1px solid var(--border-color); color: #fff; border-radius: 5px; font-size: 1rem;
         }
         .form-buttons { display: flex; gap: 10px; margin-top: 15px; }
-        .btn-save { background: var(--accent-gold); color: #000; border: none; padding: 10px; border-radius: 5px; flex: 1; font-weight: bold; cursor: pointer; }
-        .btn-close { background: #444; color: #fff; border: none; padding: 10px; border-radius: 5px; flex: 1; cursor: pointer; }
+        .btn-save { background: var(--accent-gold); color: #000; border: none; padding: 12px; border-radius: 5px; flex: 1; font-weight: bold; cursor: pointer; font-size: 1rem; }
+        .btn-close { background: #444; color: #fff; border: none; padding: 12px; border-radius: 5px; flex: 1; cursor: pointer; font-size: 1rem; }
 
         footer {
             text-align: center;
@@ -244,19 +259,27 @@
 
     <!-- PANEL ADMIN CONFIGURABLE -->
     <div id="admin-panel">
-        <button class="btn-panel" onclick="openAddModal()"><i class="fa-solid fa-plus"></i> Agregar Nuevo Producto</button>
-        <button class="btn-panel" style="background:#4a5568;" onclick="cambiarBanner()"><i class="fa-solid fa-image"></i> Cambiar Imagen Banner</button>
+        <div class="admin-controls-group">
+            <h4><i class="fa-solid fa-image"></i> Cambiar Imagen del Banner Principal</h4>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <input type="text" id="inputBannerUrl" placeholder="Pegá el Enlace Directo de Postimages aquí..." style="flex: 1; padding: 10px; background: #0f1115; border: 1px solid var(--border-color); color: #fff; border-radius: 4px; min-width: 220px;">
+                <button class="btn-panel" style="background: var(--accent-gold); color:#000;" onclick="guardarBannerDirecto()">Guardar Banner</button>
+            </div>
+        </div>
+
+        <div>
+            <button class="btn-panel" style="background:#27ae60;" onclick="openAddModal()"><i class="fa-solid fa-plus"></i> Agregar Nuevo Producto</button>
+        </div>
     </div>
 
     <!-- HERO / ENCABEZADO IMPACTANTE -->
-    <section class="hero">
+    <section class="hero" id="heroSection">
         <h1>Torrez Herrería</h1>
         <p>Estructuras metálicas de alta resistencia, parrillas reforzadas y trabajos a medida con terminación profesional.</p>
         <div class="hero-buttons">
             <a href="https://wa.me/5492617677108?text=Hola%20Leonel,%20quiero%20consultar%20por%20un%20presupuesto" target="_blank" class="btn-primary-act">
                 <i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i> Presupuesto por WhatsApp
             </a>
-            <!-- LINK DIRECTO A GOOGLE MAPS PARA VIVERO CACTUS BORBOLLÓN -->
             <a href="https://www.google.com/maps/search/?api=1&query=Vivero+Cactus+Borbollon+Mendoza" target="_blank" class="btn-maps">
                 <i class="fa-solid fa-map-location-dot"></i> Ver Ubicación en Google Maps
             </a>
@@ -282,38 +305,14 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE IMPACTO: POR QUÉ NUESTRO TRABAJO VALE LO QUE VALE -->
+    <!-- SECCIÓN DE IMPACTO: PROCESO (AHORA EDITABLE) -->
     <section class="process-section">
         <div class="section-header">
             <h2>El Arte y la Ciencia del Metal</h2>
             <p>No vendemos chapa fina ni soldaduras a punto. Construimos durabilidad para toda la vida.</p>
         </div>
 
-        <div class="process-grid">
-            <div class="process-card">
-                <img src="https://i.postimg.cc/q76pPT7V/1790305937565.png" alt="Corte y Estructura" loading="lazy">
-                <div class="process-content">
-                    <h3><span>1</span> Estructuras Sólidas</h3>
-                    <p>Utilizamos caños estructurales de pared gruesa y hierro macizo. Seleccionamos materiales rígidos que soportan alto peso y altas temperaturas sin deformarse.</p>
-                </div>
-            </div>
-
-            <div class="process-card">
-                <img src="https://i.postimg.cc/q76pPT7V/1790305937565.png" alt="Soldadura Reforzada" loading="lazy">
-                <div class="process-content">
-                    <h3><span>2</span> Soldadura de Arco Continuo</h3>
-                    <p>Uniones penetradas a cordón completo. Eliminamos escoria y pulimos bordes para lograr encastres perfectos y máxima resistencia estructural.</p>
-                </div>
-            </div>
-
-            <div class="process-card">
-                <img src="https://i.postimg.cc/q76pPT7V/1790305937565.png" alt="Protección Anti-Óxido" loading="lazy">
-                <div class="process-content">
-                    <h3><span>3</span> Acabado Antioxidante</h3>
-                    <p>Tratamiento de superficie con convertidor de óxido y pintura sintética resistente al sol y la humedad del exterior. Calidad de terminación al tacto.</p>
-                </div>
-            </div>
-        </div>
+        <div class="process-grid" id="processGrid"></div>
     </section>
 
     <!-- CATÁLOGO DE PRODUCTOS DINÁMICO -->
@@ -340,7 +339,7 @@
         </div>
     </div>
 
-    <!-- MODAL PRODUCTO MULTI-ÁNGULO -->
+    <!-- MODAL PRODUCTO -->
     <div class="modal" id="productModal">
         <div class="modal-content">
             <h3 id="modalTitle" style="margin-bottom:15px; color:#fff;">Publicación</h3>
@@ -355,15 +354,39 @@
             </div>
             <div class="form-group">
                 <label>Descripción / Detalles técnicos:</label>
-                <textarea id="prodDesc" rows="3" placeholder="Medidas, tipo de hierro, acabado..."></textarea>
+                <textarea id="prodDesc" rows="3"></textarea>
             </div>
             <div class="form-group">
-                <label>URLs de Fotos (separadas por coma para mostrar varios ángulos):</label>
+                <label>URLs de Fotos (separadas por coma para varios ángulos):</label>
                 <input type="text" id="prodImg" placeholder="https://i.postimg.cc/foto1.png, https://i.postimg.cc/foto2.png">
             </div>
             <div class="form-buttons">
-                <button class="btn-save" onclick="saveProduct()">Guardar Publicación</button>
+                <button class="btn-save" onclick="saveProduct()">Guardar</button>
                 <button class="btn-close" onclick="closeModal('productModal')">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EDITAR PASO DE PROCESO -->
+    <div class="modal" id="processModal">
+        <div class="modal-content">
+            <h3 style="margin-bottom:15px; color:#fff;">Editar Paso de Fabricación</h3>
+            <input type="hidden" id="processIndex">
+            <div class="form-group">
+                <label>Título del Paso:</label>
+                <input type="text" id="processTitle">
+            </div>
+            <div class="form-group">
+                <label>Descripción:</label>
+                <textarea id="processDesc" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label>URL de la Foto (Postimages Direct Link):</label>
+                <input type="text" id="processImg">
+            </div>
+            <div class="form-buttons">
+                <button class="btn-save" onclick="saveProcessStep()">Guardar Paso</button>
+                <button class="btn-close" onclick="closeModal('processModal')">Cancelar</button>
             </div>
         </div>
     </div>
@@ -381,19 +404,68 @@
         const phone = "5492617677108";
         let isAdmin = false;
 
-        const initialProducts = [
-            { 
-                name: "Parrilla de Hierro Reforzada", 
-                price: 40000, 
-                desc: "Construida en hierro macizo y caño estructural reforzado. Excelente disipación de calor y alta durabilidad.", 
-                img: "https://i.postimg.cc/q76pPT7V/1790305937565.png" 
-            },
-            { 
-                name: "Porta Maceta Nórdico (3 Pies)", 
-                price: 9000, 
-                desc: "Estructura metálica en ángulo con tres apoyos estables. Tratamiento sintético negro satinado.", 
-                img: "https://i.postimg.cc/q76pPT7V/1790305937565.png" 
+        // Banner inicial o guardado
+        const defaultBanner = "https://i.postimg.cc/q76pPT7V/1790305937565.png";
+        function getBanner() {
+            return localStorage.getItem('torrez_banner') || defaultBanner;
+        }
+        function aplicarBanner() {
+            document.getElementById('heroSection').style.backgroundImage = `linear-gradient(rgba(15, 17, 21, 0.7), rgba(15, 17, 21, 0.95)), url('${getBanner()}')`;
+        }
+        aplicarBanner();
+
+        function guardarBannerDirecto() {
+            const link = document.getElementById('inputBannerUrl').value.trim();
+            if(link) {
+                localStorage.setItem('torrez_banner', link);
+                aplicarBanner();
+                alert("¡Banner actualizado con éxito!");
+                document.getElementById('inputBannerUrl').value = '';
+            } else {
+                alert("Por favor pegá un enlace válido.");
             }
+        }
+
+        // Datos iniciales de Proceso
+        const defaultProcess = [
+            { title: "Estructuras Sólidas", desc: "Utilizamos caños estructurales de pared gruesa y hierro macizo. Seleccionamos materiales rígidos que soportan alto peso y altas temperaturas sin deformarse.", img: "https://i.postimg.cc/q76pPT7V/1790305937565.png" },
+            { title: "Soldadura de Arco Continuo", desc: "Uniones penetradas a cordón completo. Eliminamos escoria y pulimos bordes para lograr encastres perfectos y máxima resistencia estructural.", img: "https://i.postimg.cc/q76pPT7V/1790305937565.png" },
+            { title: "Acabado Antioxidante", desc: "Tratamiento de superficie con convertidor de óxido y pintura sintética resistente al sol y la humedad del exterior. Calidad de terminación al tacto.", img: "https://i.postimg.cc/q76pPT7V/1790305937565.png" }
+        ];
+
+        function getProcess() {
+            const stored = localStorage.getItem('torrez_process');
+            return stored ? JSON.parse(stored) : defaultProcess;
+        }
+
+        function renderProcess() {
+            const steps = getProcess();
+            const grid = document.getElementById('processGrid');
+            grid.innerHTML = '';
+
+            steps.forEach((step, index) => {
+                grid.innerHTML += `
+                    <div class="process-card">
+                        <img src="${step.img}" alt="${step.title}" loading="lazy">
+                        <div class="process-content">
+                            <div>
+                                <h3><span>${index+1}</span> ${step.title}</h3>
+                                <p>${step.desc}</p>
+                            </div>
+                            ${isAdmin ? `
+                                <div style="margin-top: 15px;">
+                                    <button class="btn-edit" onclick="openEditProcess(${index})"><i class="fa-solid fa-pen"></i> Editar Paso</button>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>`;
+            });
+        }
+
+        // Productos
+        const initialProducts = [
+            { name: "Parrilla de Hierro Reforzada", price: 40000, desc: "Construida en hierro macizo y caño estructural reforzado. Excelente disipación de calor y alta durabilidad.", img: "https://i.postimg.cc/q76pPT7V/1790305937565.png" },
+            { name: "Porta Maceta Nórdico (3 Pies)", price: 9000, desc: "Estructura metálica en ángulo con tres apoyos estables. Tratamiento sintético negro satinado.", img: "https://i.postimg.cc/q76pPT7V/1790305937565.png" }
         ];
 
         function getProducts() {
@@ -456,6 +528,7 @@
                 isAdmin = false;
                 document.body.classList.remove('admin-mode');
                 renderProducts();
+                renderProcess();
             } else {
                 document.getElementById('loginModal').style.display = 'flex';
             }
@@ -468,6 +541,7 @@
                 closeModal('loginModal');
                 document.getElementById('adminPassword').value = '';
                 renderProducts();
+                renderProcess();
             } else { alert("Clave incorrecta."); }
         }
 
@@ -520,8 +594,34 @@
             }
         }
 
+        // EDICIÓN DE PASOS DE PROCESO
+        function openEditProcess(index) {
+            const steps = getProcess();
+            const step = steps[index];
+            document.getElementById('processIndex').value = index;
+            document.getElementById('processTitle').value = step.title;
+            document.getElementById('processDesc').value = step.desc;
+            document.getElementById('processImg').value = step.img;
+            document.getElementById('processModal').style.display = 'flex';
+        }
+
+        function saveProcessStep() {
+            const index = document.getElementById('processIndex').value;
+            const steps = getProcess();
+            steps[index] = {
+                title: document.getElementById('processTitle').value,
+                desc: document.getElementById('processDesc').value,
+                img: document.getElementById('processImg').value.trim()
+            };
+            localStorage.setItem('torrez_process', JSON.stringify(steps));
+            closeModal('processModal');
+            renderProcess();
+        }
+
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        
         renderProducts();
+        renderProcess();
     </script>
 </body>
 </html>
