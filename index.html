@@ -3,79 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torrez - Herrería Industrial & Trabajos en Metal</title>
+    <title>Torrez - Herrería Artesanal & Industrial</title>
     <!-- FontAwesome Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Montserrat & Inter para diseño de alta gama -->
+    <!-- Google Fonts: Space Grotesk (Títulos Taller) e Inter (Lectura) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #0b0d10;
-            --bg-card: #14171d;
-            --bg-surface: #1a1e26;
-            --accent-gold: #f39c12;
-            --accent-gold-glow: rgba(243, 156, 18, 0.25);
+            --bg-card: #13171f;
+            --bg-surface: #1a202c;
+            --accent-forge: #ea580c;
+            --accent-chalk: #f59e0b;
+            --accent-chalk-glow: rgba(245, 158, 11, 0.2);
             --accent-green: #25D366;
-            --text-primary: #f4f6f9;
+            --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
-            --border-color: #262d3d;
+            --border-tech: #263143;
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-body); }
         
-        h1, h2, h3, h4, .price-tag, .hero h1, .section-header h2 {
-            font-family: 'Montserrat', sans-serif;
+        h1, h2, h3, h4, .price-tag, .filter-btn, .hero h1, .tech-badge {
+            font-family: var(--font-head);
         }
 
-        body { background-color: var(--bg-dark); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-primary); 
+            line-height: 1.6; 
+            overflow-x: hidden;
+            background-image: radial-gradient(rgba(245, 158, 11, 0.05) 1px, transparent 0);
+            background-size: 32px 32px;
+        }
 
-        /* BARRA DE NAVEGACIÓN SUPERIOR */
+        /* BARRA SUPERIOR CON ESTILO DE TALLER */
         .top-bar {
-            background: #060709;
+            background: #050608;
             padding: 12px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 2px solid var(--border-tech);
             font-size: 0.85rem;
         }
-        .top-bar .location-tag { color: var(--accent-gold); font-weight: 600; display: flex; align-items: center; gap: 8px; letter-spacing: 0.5px; }
+        .top-bar .location-tag { color: var(--accent-chalk); font-weight: 700; display: flex; align-items: center; gap: 8px; letter-spacing: 0.5px; }
         .btn-admin-login {
             background: transparent;
             color: var(--text-secondary);
-            border: 1px solid var(--border-color);
+            border: 1px dashed var(--border-tech);
             padding: 6px 14px;
-            border-radius: 6px;
+            border-radius: 4px;
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .btn-admin-login:hover { color: #fff; border-color: var(--accent-gold); background: rgba(243, 156, 18, 0.05); }
+        .btn-admin-login:hover { color: #fff; border-color: var(--accent-chalk); background: rgba(245, 158, 11, 0.1); }
 
         /* PANEL ADMIN */
         #admin-panel {
             display: none;
             background: var(--bg-surface);
             padding: 20px;
-            border-bottom: 2px solid var(--accent-gold);
+            border-bottom: 3px solid var(--accent-chalk);
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         body.admin-mode #admin-panel { display: block; }
         
         .admin-controls-group {
-            background: #14171d;
+            background: #0f1218;
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 15px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-tech);
             text-align: left;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
-        .admin-controls-group h4 { color: var(--accent-gold); margin-bottom: 10px; font-size: 1rem; }
+        .admin-controls-group h4 { color: var(--accent-chalk); margin-bottom: 10px; font-size: 1rem; }
 
         .btn-panel {
             background: #2563eb;
@@ -83,44 +92,58 @@
             border: none;
             padding: 10px 20px;
             border-radius: 6px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             margin: 5px;
             font-size: 0.95rem;
-            transition: 0.2s;
         }
-        .btn-panel:hover { opacity: 0.9; transform: translateY(-1px); }
 
-        /* HERO / BANNER PRINCIPAL DE ALTA GAMA */
+        /* HERO ESTILO HOJA DE INGENIERÍA / FORJA */
         .hero {
             position: relative;
-            background: linear-gradient(135deg, rgba(11, 13, 16, 0.85), rgba(11, 13, 16, 0.95)), center/cover no-repeat;
-            padding: 90px 20px;
+            background: linear-gradient(180deg, rgba(11, 13, 16, 0.82), rgba(11, 13, 16, 0.98)), center/cover no-repeat;
+            padding: 80px 20px 60px 20px;
             text-align: center;
-            border-bottom: 3px solid var(--accent-gold);
-            box-shadow: inset 0 -20px 40px rgba(0,0,0,0.6);
+            border-bottom: 3px solid var(--accent-chalk);
         }
-        .hero h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 3px; color: #fff; margin-bottom: 12px; text-shadow: 0 4px 20px rgba(0,0,0,0.9); font-weight: 800; }
-        .hero p { font-size: 1.2rem; color: #cbd5e1; max-width: 700px; margin: 0 auto 30px auto; font-weight: 400; line-height: 1.7; }
+        .hero-tag {
+            display: inline-block;
+            background: rgba(234, 88, 12, 0.15);
+            color: var(--accent-forge);
+            border: 1px solid var(--accent-forge);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .hero h1 { font-size: 3.2rem; text-transform: uppercase; letter-spacing: 2px; color: #fff; margin-bottom: 14px; font-weight: 800; line-height: 1.1; }
+        .hero h1 span { color: var(--accent-chalk); }
+        .hero p { font-size: 1.15rem; color: #cbd5e1; max-width: 720px; margin: 0 auto 30px auto; font-weight: 400; line-height: 1.7; }
         
         .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         .btn-primary-act {
-            background: linear-gradient(135deg, #f39c12, #d35400);
-            color: #fff;
+            background: linear-gradient(135deg, #f59e0b, #ea580c);
+            color: #000;
             padding: 14px 28px;
             border-radius: 8px;
-            font-weight: 700;
+            font-weight: 800;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.35);
+            box-shadow: 0 6px 25px rgba(245, 158, 11, 0.35);
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .btn-primary-act:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(243, 156, 18, 0.5); }
+        .btn-primary-act:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(245, 158, 11, 0.5); }
         .btn-maps {
-            background: #dc2626;
-            color: white;
+            background: #1e293b;
+            color: #f8fafc;
+            border: 1px solid var(--border-tech);
             padding: 14px 28px;
             border-radius: 8px;
             font-weight: 700;
@@ -128,85 +151,89 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
             transition: all 0.3s ease;
         }
-        .btn-maps:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5); }
+        .btn-maps:hover { border-color: var(--accent-chalk); color: var(--accent-chalk); transform: translateY(-3px); }
 
-        /* BANDA DE VALOR Y ENVÍOS */
+        /* BANDA DE VALOR */
         .value-banner {
             background: var(--bg-surface);
-            padding: 30px 20px;
+            padding: 25px 20px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
-            border-bottom: 1px solid var(--border-color);
+            gap: 20px;
+            border-bottom: 1px solid var(--border-tech);
             text-align: center;
         }
-        .value-card i { font-size: 2.2rem; color: var(--accent-gold); margin-bottom: 12px; }
-        .value-card h4 { font-size: 1.05rem; color: #fff; margin-bottom: 6px; font-weight: 600; }
-        .value-card p { font-size: 0.9rem; color: var(--text-secondary); }
+        .value-card i { font-size: 2rem; color: var(--accent-chalk); margin-bottom: 10px; }
+        .value-card h4 { font-size: 1.05rem; color: #fff; margin-bottom: 4px; font-weight: 700; }
+        .value-card p { font-size: 0.88rem; color: var(--text-secondary); }
 
-        /* SECCIÓN "EL PROCESO Y LA CALIDAD" */
-        .process-section {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header h2 { font-size: 2.4rem; color: #fff; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; font-weight: 800; }
-        .section-header p { color: var(--accent-gold); font-size: 1.1rem; font-weight: 500; }
+        /* SECCIÓN CATÁLOGO CON FILTROS DINÁMICOS */
+        .catalog-container { max-width: 1280px; margin: 50px auto; padding: 0 20px; }
+        .section-header { text-align: center; margin-bottom: 35px; }
+        .section-header h2 { font-size: 2.5rem; color: #fff; text-transform: uppercase; letter-spacing: 1px; font-weight: 800; }
+        .section-header p { color: var(--accent-chalk); font-size: 1.1rem; font-weight: 600; }
 
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .process-card {
-            background: var(--bg-card);
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
+        /* FILTROS DE CATEGORÍA INTERACTIVOS */
+        .filter-wrapper {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
         }
-        .process-card:hover { 
-            transform: translateY(-8px); 
-            border-color: var(--accent-gold); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px var(--accent-gold-glow);
+        .filter-btn {
+            background: #11151c;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-tech);
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .process-card img { width: 100%; height: 220px; object-fit: cover; cursor: pointer; transition: opacity 0.2s; }
-        .process-card img:hover { opacity: 0.9; }
-        .process-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .process-content h3 { font-size: 1.3rem; color: #fff; margin-bottom: 12px; font-weight: 700; letter-spacing: 0.3px; }
-        .process-content p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent-chalk);
+            color: #000;
+            border-color: var(--accent-chalk);
+            box-shadow: 0 0 15px var(--accent-chalk-glow);
+        }
 
-        /* CATÁLOGO DE PRODUCTOS */
-        .catalog-container { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
+        /* GRID DE PRODUCTOS EN PLANO TÉCNICO */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
             gap: 30px;
         }
         .card {
             background: var(--bg-card);
-            border-radius: 14px;
+            border-radius: 12px;
             overflow: hidden;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-tech);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            position: relative;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--border-tech);
+            transition: background 0.3s;
         }
         .card:hover {
             transform: translateY(-8px);
-            border-color: var(--accent-gold);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px var(--accent-gold-glow);
+            border-color: var(--accent-chalk);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 20px var(--accent-chalk-glow);
         }
+        .card:hover::before { background: var(--accent-chalk); }
+
         .card-img-container { 
             width: 100%; 
             height: 250px; 
@@ -221,38 +248,51 @@
             object-fit: cover; 
             transition: transform 0.5s ease;
         }
-        .card-img-container:hover img { transform: scale(1.05); }
+        .card-img-container:hover img { transform: scale(1.06); }
         
+        .tech-badge {
+            position: absolute;
+            top: 12px; left: 12px;
+            background: rgba(11, 13, 16, 0.85);
+            color: var(--accent-chalk);
+            border: 1px solid var(--accent-chalk);
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            backdrop-filter: blur(4px);
+        }
+
         .gallery-nav {
             position: absolute;
-            bottom: 14px; left: 50%; transform: translateX(-50%);
-            display: flex; gap: 8px; background: rgba(0,0,0,0.75);
-            padding: 6px 14px; border-radius: 20px;
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(255,255,255,0.1);
+            bottom: 12px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 8px; background: rgba(0,0,0,0.8);
+            padding: 5px 12px; border-radius: 20px;
+            backdrop-filter: blur(4px);
         }
-        .dot { width: 9px; height: 9px; border-radius: 50%; background: #64748b; cursor: pointer; transition: background 0.2s; }
-        .dot.active { background: var(--accent-gold); box-shadow: 0 0 8px var(--accent-gold); }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: #64748b; cursor: pointer; transition: background 0.2s; }
+        .dot.active { background: var(--accent-chalk); }
 
-        .card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .card h3 { font-size: 1.3rem; color: #fff; margin-bottom: 10px; font-weight: 700; letter-spacing: 0.3px; }
-        .card p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 22px; line-height: 1.6; }
+        .card-body { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .card h3 { font-size: 1.25rem; color: #fff; margin-bottom: 10px; font-weight: 700; font-family: var(--font-head); }
+        .card p { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
         
         .price-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 15px;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px dashed var(--border-tech);
             padding-top: 15px;
         }
-        .price-tag { font-size: 1.7rem; color: var(--accent-gold); font-weight: 800; letter-spacing: -0.5px; }
+        .price-tag { font-size: 1.7rem; color: var(--accent-chalk); font-weight: 800; }
         
         .btn-wssp-card {
             background-color: var(--accent-green);
             color: #fff;
             text-decoration: none;
-            padding: 12px 18px;
+            padding: 12px 16px;
             border-radius: 8px;
             font-weight: 700;
             display: flex;
@@ -260,13 +300,28 @@
             justify-content: center;
             gap: 10px;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
         }
-        .btn-wssp-card:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
+        .btn-wssp-card:hover { opacity: 0.92; transform: translateY(-2px); }
 
-        .admin-actions { display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 15px; }
+        .admin-actions { display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid var(--border-tech); padding-top: 15px; }
         .btn-edit { background: #d97706; color: white; border: none; padding: 8px; border-radius: 6px; flex: 1; cursor: pointer; font-weight: 600; }
         .btn-delete { background: #dc2626; color: white; border: none; padding: 8px; border-radius: 6px; flex: 1; cursor: pointer; font-weight: 600; }
+
+        /* SECCIÓN PROCESO */
+        .process-section { max-width: 1280px; margin: 70px auto; padding: 0 20px; }
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .process-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-tech);
+            transition: transform 0.3s ease;
+        }
+        .process-card:hover { transform: translateY(-6px); border-color: var(--accent-chalk); }
+        .process-card img { width: 100%; height: 210px; object-fit: cover; cursor: pointer; }
+        .process-content { padding: 24px; }
+        .process-content h3 { font-size: 1.2rem; color: #fff; margin-bottom: 10px; font-weight: 700; font-family: var(--font-head); }
+        .process-content p { font-size: 0.9rem; color: var(--text-secondary); }
 
         /* MODALES */
         .modal {
@@ -286,29 +341,28 @@
             border-radius: 14px;
             width: 100%;
             max-width: 520px;
-            border: 1px solid var(--accent-gold);
+            border: 1px solid var(--accent-chalk);
             box-shadow: 0 25px 60px rgba(0,0,0,0.8);
         }
         .form-group { margin-bottom: 16px; }
         .form-group label { display: block; margin-bottom: 6px; font-size: 0.9rem; color: var(--text-secondary); font-weight: 600; }
         .form-group input, .form-group textarea {
-            width: 100%; padding: 12px; background: #0b0d10; border: 1px solid var(--border-color); color: #fff; border-radius: 8px; font-size: 1rem;
+            width: 100%; padding: 12px; background: #0b0d10; border: 1px solid var(--border-tech); color: #fff; border-radius: 8px; font-size: 1rem;
         }
-        .form-group input:focus, .form-group textarea:focus { border-color: var(--accent-gold); outline: none; box-shadow: 0 0 10px var(--accent-gold-glow); }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--accent-chalk); outline: none; }
         .form-buttons { display: flex; gap: 12px; margin-top: 20px; }
-        .btn-save { background: var(--accent-gold); color: #000; border: none; padding: 12px; border-radius: 8px; flex: 1; font-weight: 700; cursor: pointer; font-size: 1rem; }
+        .btn-save { background: var(--accent-chalk); color: #000; border: none; padding: 12px; border-radius: 8px; flex: 1; font-weight: 700; cursor: pointer; font-size: 1rem; }
         .btn-close { background: #334155; color: #fff; border: none; padding: 12px; border-radius: 8px; flex: 1; cursor: pointer; font-size: 1rem; }
 
         footer {
             text-align: center;
             padding: 50px 20px;
-            background: #040507;
-            border-top: 1px solid var(--border-color);
+            background: #050608;
+            border-top: 2px solid var(--border-tech);
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
-        footer a { color: var(--accent-gold); text-decoration: none; margin: 0 12px; font-weight: 500; }
-        footer a:hover { text-decoration: underline; }
+        footer a { color: var(--accent-chalk); text-decoration: none; margin: 0 12px; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -318,13 +372,13 @@
         <button class="btn-admin-login" onclick="toggleAdminLogin()"><i class="fa-solid fa-lock"></i> Panel Admin</button>
     </div>
 
-    <!-- PANEL ADMIN CONFIGURABLE -->
+    <!-- PANEL ADMIN -->
     <div id="admin-panel">
         <div class="admin-controls-group">
             <h4><i class="fa-solid fa-image"></i> Cambiar Imagen del Banner Principal</h4>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <input type="text" id="inputBannerUrl" placeholder="Pegá el Enlace Directo aquí..." style="flex: 1; padding: 10px; background: #0b0d10; border: 1px solid var(--border-color); color: #fff; border-radius: 8px; min-width: 220px;">
-                <button class="btn-panel" style="background: var(--accent-gold); color:#000;" onclick="guardarBannerDirecto()">Guardar Banner</button>
+                <input type="text" id="inputBannerUrl" placeholder="Pegá el Enlace Directo aquí..." style="flex: 1; padding: 10px; background: #0b0d10; border: 1px solid var(--border-tech); color: #fff; border-radius: 8px; min-width: 220px;">
+                <button class="btn-panel" style="background: var(--accent-chalk); color:#000;" onclick="guardarBannerDirecto()">Guardar Banner</button>
             </div>
         </div>
 
@@ -333,71 +387,81 @@
         </div>
     </div>
 
-    <!-- HERO / ENCABEZADO IMPACTANTE -->
+    <!-- HERO -->
     <section class="hero" id="heroSection">
-        <h1>Torrez Herrería</h1>
-        <p>Estructuras metálicas de alta resistencia, parrillas reforzadas y trabajos a medida con dedicación artesanal y firmeza real.</p>
+        <span class="hero-tag"><i class="fa-solid fa-hammer"></i> Fabricación Artesanal</span>
+        <h1>Torrez <span>Herrería</span></h1>
+        <p>Construcciones sólidas en hierro macizo y caño estructural. Parrillas reforzadas, soportes de jardín y organizadores de alta durabilidad.</p>
         <div class="hero-buttons">
             <a href="https://wa.me/5492617677108?text=Hola%20Leonel,%20quiero%20consultar%20por%20un%20presupuesto" target="_blank" class="btn-primary-act">
-                <i class="fa-brands fa-whatsapp" style="font-size:1.3rem;"></i> Presupuesto por WhatsApp
+                <i class="fa-brands fa-whatsapp" style="font-size:1.3rem;"></i> Consultar Presupuesto
             </a>
             <a href="https://www.google.com/maps/search/?api=1&query=Vivero+Cactus+Borbollon+Mendoza" target="_blank" class="btn-maps">
-                <i class="fa-solid fa-map-location-dot"></i> Ver Ubicación en Google Maps
+                <i class="fa-solid fa-location-dot"></i> Ver en Google Maps
             </a>
         </div>
     </section>
 
-    <!-- VENTAJAS DE CONFIANZA Y ENVÍOS -->
+    <!-- BANDA DE VALOR -->
     <section class="value-banner">
         <div class="value-card">
             <i class="fa-solid fa-truck-fast"></i>
             <h4>Envíos A Domicilio</h4>
-            <p>Despachos cercanos en Las Heras, Mendoza y zonas aledañas.</p>
+            <p>Despachos cercanos en Las Heras y Gran Mendoza.</p>
         </div>
         <div class="value-card">
             <i class="fa-solid fa-shield-halved"></i>
             <h4>Trabajo A Conciencia</h4>
-            <p>Materiales de buen espesor, estructura firme y dedicación en cada detalle.</p>
+            <p>Hierro de buen espesor y soldadura sólida.</p>
         </div>
         <div class="value-card">
             <i class="fa-solid fa-store"></i>
             <h4>Punto de Retiro</h4>
-            <p>Atención y retiro directo en El Borbollón (Punto Vivero Cactus Borbollón).</p>
+            <p>Atención directa en El Borbollón (Vivero Cactus).</p>
         </div>
     </section>
 
-    <!-- SECCIÓN DE IMPACTO: PROCESO -->
+    <!-- CATÁLOGO CON FILTROS DINÁMICOS -->
+    <section class="catalog-container">
+        <div class="section-header">
+            <h2>Catálogo de Trabajos</h2>
+            <p>Seleccioná una categoría para explorar nuestros diseños</p>
+        </div>
+
+        <!-- BOTONES DE FILTRADO -->
+        <div class="filter-wrapper">
+            <button class="filter-btn active" onclick="filterCatalog('todos', this)">Todos</button>
+            <button class="filter-btn" onclick="filterCatalog('parrillas', this)">Parrillas y Fuegos</button>
+            <button class="filter-btn" onclick="filterCatalog('jardin', this)">Jardín y Plantas</button>
+            <button class="filter-btn" onclick="filterCatalog('hogar', this)">Hogar y Percheros</button>
+        </div>
+
+        <div class="grid" id="productGrid"></div>
+    </section>
+
+    <!-- PROCESO DE FABRICACIÓN -->
     <section class="process-section">
         <div class="section-header">
-            <h2>El Arte y la Ciencia del Metal</h2>
-            <p>Estructuras de hierro diseñadas para resistir toda la vida.</p>
+            <h2>Dedicación y Resistencia</h2>
+            <p>Cómo fabricamos cada pieza en nuestro taller</p>
         </div>
 
         <div class="process-grid" id="processGrid"></div>
     </section>
 
-    <!-- CATÁLOGO DE PRODUCTOS DINÁMICO -->
-    <section class="catalog-container">
-        <div class="section-header" style="margin-bottom: 30px;">
-            <h2>Catálogo de Trabajos</h2>
-            <p>Explorá nuestras construcciones en stock y a pedido.</p>
-        </div>
-        <div class="grid" id="productGrid"></div>
-    </section>
-
-    <!-- MODAL PARA VER IMAGEN GRANDE (LIGHTBOX) -->
+    <!-- MODAL VISOR LIGHTBOX -->
     <div class="modal" id="imageModal" onclick="closeModal('imageModal')">
         <div style="text-align:center; max-width:95%; max-height:95vh; position:relative;" onclick="event.stopPropagation()">
-            <span onclick="closeModal('imageModal')" style="position:absolute; top:-20px; right:-20px; background:var(--accent-gold); color:#000; width:38px; height:38px; border-radius:50%; display:flex; justify-content:center; align-items:center; font-weight:bold; cursor:pointer; font-size:1.3rem; box-shadow:0 4px 15px rgba(0,0,0,0.6);">×</span>
-            <img id="expandedImg" src="" style="max-width:100%; max-height:85vh; border-radius:10px; box-shadow:0 15px 50px rgba(0,0,0,0.9); border: 2px solid var(--accent-gold); object-fit: contain;">
-            <p style="color: var(--text-secondary); margin-top: 15px; font-size: 0.95rem;"><i class="fa-solid fa-magnifying-glass"></i> Tocá fuera de la imagen o la cruz para cerrar</p>
+            <span onclick="closeModal('imageModal')" style="position:absolute; top:-20px; right:-20px; background:var(--accent-chalk); color:#000; width:38px; height:38px; border-radius:50%; display:flex; justify-content:center; align-items:center; font-weight:bold; cursor:pointer; font-size:1.3rem; box-shadow:0 4px 15px rgba(0,0,0,0.6);">×</span>
+            <img id="expandedImg" src="" style="max-width:100%; max-height:85vh; border-radius:10px; box-shadow:0 15px 50px rgba(0,0,0,0.9); border: 2px solid var(--accent-chalk); object-fit: contain;">
+            <p style="color: var(--text-secondary); margin-top: 15px; font-size: 0.95rem;"><i class="fa-solid fa-magnifying-glass"></i> Tocá en cualquier lado para cerrar</p>
         </div>
     </div>
 
-    <!-- MODAL DE LOGIN -->
+    <!-- MODAL LOGIN -->
     <div class="modal" id="loginModal">
         <div class="modal-content">
-            <h3 style="margin-bottom:18px; color:#fff; font-size: 1.3rem;">Acceso Administrador</h3>
+            <h3 style="margin-bottom:18px; color:#fff;">Acceso Administrador</h3>
             <div class="form-group">
                 <label>Contraseña:</label>
                 <input type="password" id="adminPassword" placeholder="Clave de administración">
@@ -412,11 +476,19 @@
     <!-- MODAL PRODUCTO -->
     <div class="modal" id="productModal">
         <div class="modal-content">
-            <h3 id="modalTitle" style="margin-bottom:18px; color:#fff; font-size: 1.3rem;">Publicación</h3>
+            <h3 id="modalTitle" style="margin-bottom:18px; color:#fff;">Publicación</h3>
             <input type="hidden" id="prodIndex">
             <div class="form-group">
                 <label>Título del producto:</label>
                 <input type="text" id="prodName">
+            </div>
+            <div class="form-group">
+                <label>Categoría:</label>
+                <select id="prodCategory" style="width:100%; padding:12px; background:#0b0d10; border:1px solid var(--border-tech); color:#fff; border-radius:8px;">
+                    <option value="parrillas">Parrillas y Fuegos</option>
+                    <option value="jardin">Jardín y Plantas</option>
+                    <option value="hogar">Hogar y Percheros</option>
+                </select>
             </div>
             <div class="form-group">
                 <label>Precio ($):</label>
@@ -427,8 +499,8 @@
                 <textarea id="prodDesc" rows="3"></textarea>
             </div>
             <div class="form-group">
-                <label>URLs de Fotos (separadas por coma para varios ángulos):</label>
-                <input type="text" id="prodImg" placeholder="https://i.ibb.co/foto1.jpg, https://i.ibb.co/foto2.jpg">
+                <label>URLs de Fotos (separadas por coma):</label>
+                <input type="text" id="prodImg">
             </div>
             <div class="form-buttons">
                 <button class="btn-save" onclick="saveProduct()">Guardar</button>
@@ -440,7 +512,7 @@
     <!-- MODAL EDITAR PASO DE PROCESO -->
     <div class="modal" id="processModal">
         <div class="modal-content">
-            <h3 style="margin-bottom:18px; color:#fff; font-size: 1.3rem;">Editar Paso de Fabricación</h3>
+            <h3 style="margin-bottom:18px; color:#fff;">Editar Paso de Fabricación</h3>
             <input type="hidden" id="processIndex">
             <div class="form-group">
                 <label>Título del Paso:</label>
@@ -462,24 +534,25 @@
     </div>
 
     <footer>
-        <p><strong>Torrez - Herrería y Trabajos en Metal</strong> © 2026</p>
+        <p><strong>Torrez - Herrería Artesanal & Industrial</strong> © 2026</p>
         <p>El Borbollón, Las Heras, Mendoza, Argentina</p>
         <div style="margin-top:18px;">
             <a href="https://wa.me/5492617677108" target="_blank"><i class="fa-brands fa-whatsapp"></i> 261 767-7108</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Vivero+Cactus+Borbollon+Mendoza" target="_blank"><i class="fa-solid fa-location-dot"></i> Ubicación Google Maps</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Vivero+Cactus+Borbollon+Mendoza" target="_blank"><i class="fa-solid fa-location-dot"></i> Ubicación en Mapas</a>
         </div>
     </footer>
 
     <script>
         const phone = "5492617677108";
         let isAdmin = false;
+        let currentFilter = 'todos';
 
         const defaultBanner = "https://i.postimg.cc/q76pPT7V/1790305937565.png";
         function getBanner() {
             return localStorage.getItem('torrez_banner') || defaultBanner;
         }
         function aplicarBanner() {
-            document.getElementById('heroSection').style.backgroundImage = `linear-gradient(rgba(11, 13, 16, 0.85), rgba(11, 13, 16, 0.95)), url('${getBanner()}')`;
+            document.getElementById('heroSection').style.backgroundImage = `linear-gradient(180deg, rgba(11, 13, 16, 0.82), rgba(11, 13, 16, 0.98)), url('${getBanner()}')`;
         }
         aplicarBanner();
 
@@ -528,12 +601,10 @@
                     <div class="process-card">
                         <img src="${step.img}" alt="${step.title}" loading="lazy" onclick="openImageModal('${step.img}')">
                         <div class="process-content">
-                            <div>
-                                <h3>${step.title}</h3>
-                                <p>${step.desc}</p>
-                            </div>
+                            <h3>${step.title}</h3>
+                            <p>${step.desc}</p>
                             ${isAdmin ? `
-                                <div style="margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 12px;">
+                                <div style="margin-top: 15px; border-top: 1px solid var(--border-tech); padding-top: 12px;">
                                     <button class="btn-edit" onclick="openEditProcess(${index})"><i class="fa-solid fa-pen"></i> Editar Paso</button>
                                 </div>
                             ` : ''}
@@ -542,88 +613,116 @@
             });
         }
 
-        // Tus 13 productos completos y exactos
+        // TUS 14 PRODUCTOS CON CATEGORÍAS ASIGNADAS Y TAGS
         const initialProducts = [
             { 
                 name: "Parrilla de Hierro Reforzada 60X40",
+                category: "parrillas",
+                badge: "REFORZADA",
                 price: 40000, 
                 desc: "Construida en hierro macizo y caño estructural reforzado. Excelente disipación de calor y alta durabilidad.",
                 img: "https://i.ibb.co/Vcm0prCz/20261014-101301.jpg" 
             },
             { 
                 name: "Porta Maceta Nórdico (3 Pies) N10",
+                category: "jardin",
+                badge: "NÓRDICO",
                 price: 9000, 
                 desc: "Estructura metálica con tres apoyos estables. Tratamiento sintético rojo/blanco satinado.",
                 img: "https://i.ibb.co/qMZNxpkf/received-1062915786526454.jpg,https://i.ibb.co/b5LNKDKQ/received-2324787148333711.jpg,https://i.ibb.co/TBNCkH0Z/received-2085154365427616.jpg" 
             },
             { 
                 name: "Parrilla Estilo Industrial 70X50",
+                category: "parrillas",
+                badge: "PROFESIONAL",
                 price: 80000, 
                 desc: "Parrilla profesional de ángulo, hierro liso y metal desplegado.",
                 img: "https://i.ibb.co/27RHcZhY/8429b61ed4c705bbb773157a98c48199.jpg" 
             },
             {
                 name: "Carretilla Grande para 3 Macetas (N°17)", 
+                category: "jardin",
+                badge: "INSIGNIA",
                 price: 34999, 
                 desc: "Porta macetas grande en hierro aletado reforzado con espacio para 3 plantas Nª17, de 1 m de largo. Pintura anticorrosiva satinada.", 
                 img: "https://i.ibb.co/8Lb9TwhS/20261014-101322.jpg,https://i.ibb.co/xS5bDz1T/20261014-101317.jpg" 
             },
             { 
                 name: "Perchero de Pie Industrial (1,80 m)", 
+                category: "hogar",
+                badge: "MACIZO 12MM",
                 price: 45000, 
                 desc: "Perchero alto de gran estabilidad fabricado en hierro liso macizo de 12 mm. Soporta camperas pesadas sin vencerse.", 
                 img: "https://i.ibb.co/9HDdw7Yt/70db3c39d18c04d4ba7a653d398c40ce.jpg" 
             },
             { 
                 name: "Torre Vertical para 6 Macetas Nª15 (1,70 m)", 
+                category: "jardin",
+                badge: "6 MACETAS",
                 price: 60000, 
                 desc: "Estructura vertical de gran altura para 6 macetas N°15. Aprovecha el espacio a lo alto para lucir plantas.", 
                 img: "https://i.ibb.co/WvgfFFpm/29d579be05cdac4e0e33d62036143b52.jpg" 
             },
             { 
                 name: "Brasero Reforzado 40x30 cm (Hierro del 8/10)", 
+                category: "parrillas",
+                badge: "ALTO CALOR",
                 price: 34999, 
                 desc: "Brasero para leña con hierro macizo del 8 y malla desplegada gruesa. Gran resistencia al calor directo.", 
                 img: "https://i.ibb.co/xqfYSp3T/1729f4b6d6a54b55f08ceeedfa373072.jpg" 
             },
             { 
                 name: "Porta Maceta Figura Gato (N°12)", 
+                category: "jardin",
+                badge: "ARTESANAL",
                 price: 24999, 
                 desc: "Soporte artesanal de pared en hierro con diseño de gato. Trae 2 aros para macetas N°12.", 
                 img: "https://i.ibb.co/jPCnqGV5/20261009-202607.jpg" 
             },
             { 
                 name: "Mini Triciclo para 3 Macetas (N°10)", 
+                category: "jardin",
+                badge: "DECORATIVO",
                 price: 11999, 
                 desc: "Soporte artesanal con curvas en hierro para 3 macetas chicas. Terminación sintética contra el sol y la lluvia.", 
                 img: "https://i.ibb.co/TD6hVhcG/20261014-101352.jpg" 
             },
             { 
                 name: "Perchero / Llavero Casita (6 Ganchos)", 
+                category: "hogar",
+                badge: "ORGANIZADOR",
                 price: 11999, 
                 desc: "Organizador de pared en hierro aletado con 6 ganchos firmes para llaves o trapos de cocina.", 
                 img: "https://i.ibb.co/S4dJWzfm/IMG-20261010-WA0068.jpg" 
             },
             { 
                 name: "Porta Maceta Flotante para centro de mesa (N°10)", 
+                category: "jardin",
+                badge: "DISEÑO MESA",
                 price: 10999, 
                 desc: "Soporte individual de hierro Nª4 con acabado anticorrosivo.", 
                 img: "https://i.ibb.co/PsLw5YkJ/20261009-204354.jpg,https://i.ibb.co/8ndHDg2T/20260927-155907.jpg,https://i.ibb.co/PZ9snzPx/20260919-224602.jpg" 
             },
             { 
                 name: "Porta macetas de 3 macetas Nª10", 
+                category: "jardin",
+                badge: "TRIPLE",
                 price: 12999, 
                 desc: "Soporte de hierro para decorar jardines con acabado anticorrosivo.", 
                 img: "https://i.ibb.co/ZpCM5YYQ/20261009-204754.jpg" 
             },
             { 
                 name: "Porta Maceta de pared para macetas (N°12,14,15)", 
+                category: "jardin",
+                badge: "PARED",
                 price: 13999, 
                 desc: "Soporte individual de hierro para colgar macetas medianas en paredes o galerías con acabado anticorrosivo.", 
                 img: "https://i.ibb.co/h1gmK3YW/20261009-203651.jpg" 
             },
             { 
                 name: "Porta Maceta tipo canasto para rejas macetas (N°8 o 10)", 
+                category: "jardin",
+                badge: "PARA REJAS",
                 price: 21999, 
                 desc: "Soporte tipo canasta de hierro para colocar macetas chicas en rejas con acabado anticorrosivo.", 
                 img: "https://i.ibb.co/7JYNfPR2/IMG-20260918-WA0125.jpg,https://i.ibb.co/7JFkQfdz/IMG-20260918-WA0123.jpg" 
@@ -635,15 +734,31 @@
             return stored ? JSON.parse(stored) : initialProducts;
         }
 
+        function filterCatalog(category, btnElement) {
+            currentFilter = category;
+            
+            // Actualizar clase activa en botones
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+
+            renderProducts();
+        }
+
         function renderProducts() {
             const products = getProducts();
             const grid = document.getElementById('productGrid');
             grid.innerHTML = '';
 
-            products.forEach((prod, index) => {
+            const filtered = currentFilter === 'todos' 
+                ? products 
+                : products.filter(p => p.category === currentFilter);
+
+            filtered.forEach((prod, index) => {
                 const images = prod.img ? prod.img.split(',').map(s => s.trim()) : ['https://i.postimg.cc/q76pPT7V/1790305937565.png'];
                 const wsMessage = encodeURIComponent(`Hola Leonel! Me interesa el trabajo "${prod.name}" publicado en la web.`);
-                
+                const badgeText = prod.badge || "HERRERÍA";
+
                 let dotsHtml = '';
                 if (images.length > 1) {
                     dotsHtml = `<div class="gallery-nav">` + 
@@ -654,6 +769,7 @@
                 grid.innerHTML += `
                     <div class="card">
                         <div class="card-img-container" onclick="openActiveProductImg(${index})">
+                            <span class="tech-badge"><i class="fa-solid fa-gear"></i> ${badgeText}</span>
                             <img id="img-${index}" src="${images[0]}" alt="${prod.name}" loading="lazy">
                             ${dotsHtml}
                         </div>
@@ -737,6 +853,7 @@
             document.getElementById('prodPrice').value = prod.price;
             document.getElementById('prodDesc').value = prod.desc;
             document.getElementById('prodImg').value = prod.img;
+            if(prod.category) document.getElementById('prodCategory').value = prod.category;
             document.getElementById('productModal').style.display = 'flex';
         }
 
@@ -744,6 +861,8 @@
             const index = document.getElementById('prodIndex').value;
             const newProd = {
                 name: document.getElementById('prodName').value,
+                category: document.getElementById('prodCategory').value,
+                badge: "A MEDIDA",
                 price: document.getElementById('prodPrice').value,
                 desc: document.getElementById('prodDesc').value,
                 img: document.getElementById('prodImg').value.trim()
