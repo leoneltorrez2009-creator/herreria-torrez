@@ -6,21 +6,21 @@
     <title>Torrez - Herrería Industrial & Trabajos en Metal</title>
     <!-- FontAwesome Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Montserrat (Títulos) e Inter (Textos) -->
+    <!-- Google Fonts: Montserrat & Inter para diseño de alta gama -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0f1115;
-            --bg-card: #181b20;
-            --bg-surface: #1f232b;
-            --accent-gold: #d4af37;
-            --accent-blue: #1b4965;
+            --bg-dark: #0b0d10;
+            --bg-card: #14171d;
+            --bg-surface: #1a1e26;
+            --accent-gold: #f39c12;
+            --accent-gold-glow: rgba(243, 156, 18, 0.25);
             --accent-green: #25D366;
-            --text-primary: #f0f4f8;
-            --text-secondary: #a0aec0;
-            --border-color: #2d3748;
+            --text-primary: #f4f6f9;
+            --text-secondary: #94a3b8;
+            --border-color: #262d3d;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
@@ -33,25 +33,25 @@
 
         /* BARRA DE NAVEGACIÓN SUPERIOR */
         .top-bar {
-            background: #08090c;
-            padding: 10px 20px;
+            background: #060709;
+            padding: 12px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border-color);
             font-size: 0.85rem;
         }
-        .top-bar .location-tag { color: var(--accent-gold); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .top-bar .location-tag { color: var(--accent-gold); font-weight: 600; display: flex; align-items: center; gap: 8px; letter-spacing: 0.5px; }
         .btn-admin-login {
             background: transparent;
             color: var(--text-secondary);
             border: 1px solid var(--border-color);
-            padding: 5px 12px;
-            border-radius: 4px;
+            padding: 6px 14px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.2s ease;
         }
-        .btn-admin-login:hover { color: #fff; border-color: var(--accent-gold); }
+        .btn-admin-login:hover { color: #fff; border-color: var(--accent-gold); background: rgba(243, 156, 18, 0.05); }
 
         /* PANEL ADMIN */
         #admin-panel {
@@ -60,6 +60,7 @@
             padding: 20px;
             border-bottom: 2px solid var(--accent-gold);
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         body.admin-mode #admin-panel { display: block; }
         
@@ -77,71 +78,74 @@
         .admin-controls-group h4 { color: var(--accent-gold); margin-bottom: 10px; font-size: 1rem; }
 
         .btn-panel {
-            background: var(--accent-blue);
+            background: #2563eb;
             color: #fff;
             border: none;
-            padding: 10px 18px;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 6px;
             font-weight: 600;
             cursor: pointer;
             margin: 5px;
             font-size: 0.95rem;
+            transition: 0.2s;
         }
+        .btn-panel:hover { opacity: 0.9; transform: translateY(-1px); }
 
-        /* HERO / BANNER PRINCIPAL */
+        /* HERO / BANNER PRINCIPAL DE ALTA GAMA */
         .hero {
             position: relative;
-            background: linear-gradient(rgba(15, 17, 21, 0.7), rgba(15, 17, 21, 0.95)), center/cover no-repeat;
-            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(11, 13, 16, 0.85), rgba(11, 13, 16, 0.95)), center/cover no-repeat;
+            padding: 90px 20px;
             text-align: center;
             border-bottom: 3px solid var(--accent-gold);
+            box-shadow: inset 0 -20px 40px rgba(0,0,0,0.6);
         }
-        .hero h1 { font-size: 2.8rem; text-transform: uppercase; letter-spacing: 2px; color: #fff; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); font-weight: 800; }
-        .hero p { font-size: 1.2rem; color: var(--accent-gold); max-width: 700px; margin: 0 auto 25px auto; font-weight: 500; }
+        .hero h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 3px; color: #fff; margin-bottom: 12px; text-shadow: 0 4px 20px rgba(0,0,0,0.9); font-weight: 800; }
+        .hero p { font-size: 1.2rem; color: #cbd5e1; max-width: 700px; margin: 0 auto 30px auto; font-weight: 400; line-height: 1.7; }
         
-        .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         .btn-primary-act {
-            background: var(--accent-gold);
-            color: #000;
-            padding: 12px 25px;
-            border-radius: 6px;
+            background: linear-gradient(135deg, #f39c12, #d35400);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 8px;
             font-weight: 700;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-            transition: transform 0.2s;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.35);
+            transition: all 0.3s ease;
         }
-        .btn-primary-act:hover { transform: translateY(-2px); }
+        .btn-primary-act:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(243, 156, 18, 0.5); }
         .btn-maps {
-            background: #ea4335;
+            background: #dc2626;
             color: white;
-            padding: 12px 25px;
-            border-radius: 6px;
+            padding: 14px 28px;
+            border-radius: 8px;
             font-weight: 700;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(234, 67, 53, 0.3);
-            transition: transform 0.2s;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
+            transition: all 0.3s ease;
         }
-        .btn-maps:hover { transform: translateY(-2px); }
+        .btn-maps:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5); }
 
         /* BANDA DE VALOR Y ENVÍOS */
         .value-banner {
             background: var(--bg-surface);
-            padding: 25px 20px;
+            padding: 30px 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
             border-bottom: 1px solid var(--border-color);
             text-align: center;
         }
-        .value-card i { font-size: 2rem; color: var(--accent-gold); margin-bottom: 8px; }
-        .value-card h4 { font-size: 1rem; color: #fff; margin-bottom: 4px; font-weight: 600; }
-        .value-card p { font-size: 0.85rem; color: var(--text-secondary); }
+        .value-card i { font-size: 2.2rem; color: var(--accent-gold); margin-bottom: 12px; }
+        .value-card h4 { font-size: 1.05rem; color: #fff; margin-bottom: 6px; font-weight: 600; }
+        .value-card p { font-size: 0.9rem; color: var(--text-secondary); }
 
         /* SECCIÓN "EL PROCESO Y LA CALIDAD" */
         .process-section {
@@ -149,9 +153,9 @@
             margin: 60px auto;
             padding: 0 20px;
         }
-        .section-header { text-align: center; margin-bottom: 45px; }
-        .section-header h2 { font-size: 2.2rem; color: #fff; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
-        .section-header p { color: var(--accent-gold); font-size: 1.05rem; font-weight: 500; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.4rem; color: #fff; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; font-weight: 800; }
+        .section-header p { color: var(--accent-gold); font-size: 1.1rem; font-weight: 500; }
 
         .process-grid {
             display: grid;
@@ -160,127 +164,151 @@
         }
         .process-card {
             background: var(--bg-card);
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
         .process-card:hover { 
-            transform: translateY(-6px); 
+            transform: translateY(-8px); 
             border-color: var(--accent-gold); 
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px var(--accent-gold-glow);
         }
         .process-card img { width: 100%; height: 220px; object-fit: cover; cursor: pointer; transition: opacity 0.2s; }
         .process-card img:hover { opacity: 0.9; }
         .process-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .process-content h3 { font-size: 1.25rem; color: #fff; margin-bottom: 12px; font-weight: 700; letter-spacing: 0.5px; }
+        .process-content h3 { font-size: 1.3rem; color: #fff; margin-bottom: 12px; font-weight: 700; letter-spacing: 0.3px; }
         .process-content p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; }
 
         /* CATÁLOGO DE PRODUCTOS */
-        .catalog-container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+        .catalog-container { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
         .card {
             background: var(--bg-card);
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
         .card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-8px);
             border-color: var(--accent-gold);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px var(--accent-gold-glow);
         }
-        .card-img-container { width: 100%; height: 240px; background: #000; position: relative; cursor: pointer; }
-        .card-img-container img { width: 100%; height: 100%; object-fit: cover; }
+        .card-img-container { 
+            width: 100%; 
+            height: 250px; 
+            background: #000; 
+            position: relative; 
+            cursor: pointer; 
+            overflow: hidden;
+        }
+        .card-img-container img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.5s ease;
+        }
+        .card-img-container:hover img { transform: scale(1.05); }
         
         .gallery-nav {
             position: absolute;
-            bottom: 12px; left: 50%; transform: translateX(-50%);
+            bottom: 14px; left: 50%; transform: translateX(-50%);
             display: flex; gap: 8px; background: rgba(0,0,0,0.75);
-            padding: 6px 12px; border-radius: 20px;
-            backdrop-filter: blur(4px);
+            padding: 6px 14px; border-radius: 20px;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .dot { width: 8px; height: 8px; border-radius: 50%; background: #666; cursor: pointer; transition: background 0.2s; }
-        .dot.active { background: var(--accent-gold); }
+        .dot { width: 9px; height: 9px; border-radius: 50%; background: #64748b; cursor: pointer; transition: background 0.2s; }
+        .dot.active { background: var(--accent-gold); box-shadow: 0 0 8px var(--accent-gold); }
 
-        .card-body { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .card h3 { font-size: 1.25rem; color: #fff; margin-bottom: 8px; font-weight: 700; }
-        .card p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.5; }
-        .price-tag { font-size: 1.6rem; color: var(--accent-gold); font-weight: 800; }
+        .card-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .card h3 { font-size: 1.3rem; color: #fff; margin-bottom: 10px; font-weight: 700; letter-spacing: 0.3px; }
+        .card p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 22px; line-height: 1.6; }
+        
+        .price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+        .price-tag { font-size: 1.7rem; color: var(--accent-gold); font-weight: 800; letter-spacing: -0.5px; }
         
         .btn-wssp-card {
             background-color: var(--accent-green);
             color: #fff;
             text-decoration: none;
-            padding: 11px 15px;
-            border-radius: 6px;
+            padding: 12px 18px;
+            border-radius: 8px;
             font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            margin-top: 12px;
-            transition: opacity 0.2s;
+            gap: 10px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
         }
-        .btn-wssp-card:hover { opacity: 0.9; }
+        .btn-wssp-card:hover { opacity: 0.95; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
 
-        .admin-actions { display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 12px; }
-        .btn-edit { background: #e67e22; color: white; border: none; padding: 8px; border-radius: 4px; flex: 1; cursor: pointer; font-weight: 600; font-size: 0.85rem; }
-        .btn-delete { background: #e74c3c; color: white; border: none; padding: 8px; border-radius: 4px; flex: 1; cursor: pointer; font-weight: 600; font-size: 0.85rem; }
+        .admin-actions { display: flex; gap: 10px; margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 15px; }
+        .btn-edit { background: #d97706; color: white; border: none; padding: 8px; border-radius: 6px; flex: 1; cursor: pointer; font-weight: 600; }
+        .btn-delete { background: #dc2626; color: white; border: none; padding: 8px; border-radius: 6px; flex: 1; cursor: pointer; font-weight: 600; }
 
         /* MODALES */
         .modal {
             display: none;
             position: fixed;
             top:0; left:0; width:100%; height:100%;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0, 0, 0, 0.92);
             z-index: 1000;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
         }
         .modal-content {
             background: var(--bg-card);
             padding: 30px;
-            border-radius: 12px;
+            border-radius: 14px;
             width: 100%;
-            max-width: 500px;
+            max-width: 520px;
             border: 1px solid var(--accent-gold);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.8);
         }
         .form-group { margin-bottom: 16px; }
         .form-group label { display: block; margin-bottom: 6px; font-size: 0.9rem; color: var(--text-secondary); font-weight: 600; }
         .form-group input, .form-group textarea {
-            width: 100%; padding: 12px; background: #0f1115; border: 1px solid var(--border-color); color: #fff; border-radius: 6px; font-size: 1rem;
+            width: 100%; padding: 12px; background: #0b0d10; border: 1px solid var(--border-color); color: #fff; border-radius: 8px; font-size: 1rem;
         }
-        .form-group input:focus, .form-group textarea:focus { border-color: var(--accent-gold); outline: none; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--accent-gold); outline: none; box-shadow: 0 0 10px var(--accent-gold-glow); }
         .form-buttons { display: flex; gap: 12px; margin-top: 20px; }
-        .btn-save { background: var(--accent-gold); color: #000; border: none; padding: 12px; border-radius: 6px; flex: 1; font-weight: 700; cursor: pointer; font-size: 1rem; }
-        .btn-close { background: #444; color: #fff; border: none; padding: 12px; border-radius: 6px; flex: 1; cursor: pointer; font-size: 1rem; }
+        .btn-save { background: var(--accent-gold); color: #000; border: none; padding: 12px; border-radius: 8px; flex: 1; font-weight: 700; cursor: pointer; font-size: 1rem; }
+        .btn-close { background: #334155; color: #fff; border: none; padding: 12px; border-radius: 8px; flex: 1; cursor: pointer; font-size: 1rem; }
 
         footer {
             text-align: center;
-            padding: 45px 20px;
-            background: #08090c;
+            padding: 50px 20px;
+            background: #040507;
             border-top: 1px solid var(--border-color);
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
-        footer a { color: var(--accent-gold); text-decoration: none; margin: 0 10px; font-weight: 500; }
+        footer a { color: var(--accent-gold); text-decoration: none; margin: 0 12px; font-weight: 500; }
+        footer a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -295,23 +323,23 @@
         <div class="admin-controls-group">
             <h4><i class="fa-solid fa-image"></i> Cambiar Imagen del Banner Principal</h4>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <input type="text" id="inputBannerUrl" placeholder="Pegá el Enlace Directo de Postimages aquí..." style="flex: 1; padding: 10px; background: #0f1115; border: 1px solid var(--border-color); color: #fff; border-radius: 6px; min-width: 220px;">
+                <input type="text" id="inputBannerUrl" placeholder="Pegá el Enlace Directo aquí..." style="flex: 1; padding: 10px; background: #0b0d10; border: 1px solid var(--border-color); color: #fff; border-radius: 8px; min-width: 220px;">
                 <button class="btn-panel" style="background: var(--accent-gold); color:#000;" onclick="guardarBannerDirecto()">Guardar Banner</button>
             </div>
         </div>
 
         <div>
-            <button class="btn-panel" style="background:#27ae60;" onclick="openAddModal()"><i class="fa-solid fa-plus"></i> Agregar Nuevo Producto</button>
+            <button class="btn-panel" style="background:#10b981;" onclick="openAddModal()"><i class="fa-solid fa-plus"></i> Agregar Nuevo Producto</button>
         </div>
     </div>
 
     <!-- HERO / ENCABEZADO IMPACTANTE -->
     <section class="hero" id="heroSection">
         <h1>Torrez Herrería</h1>
-        <p>Estructuras metálicas de alta resistencia, parrillas reforzadas y trabajos a medida con terminación profesional.</p>
+        <p>Estructuras metálicas de alta resistencia, parrillas reforzadas y trabajos a medida con dedicación artesanal y firmeza real.</p>
         <div class="hero-buttons">
             <a href="https://wa.me/5492617677108?text=Hola%20Leonel,%20quiero%20consultar%20por%20un%20presupuesto" target="_blank" class="btn-primary-act">
-                <i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i> Presupuesto por WhatsApp
+                <i class="fa-brands fa-whatsapp" style="font-size:1.3rem;"></i> Presupuesto por WhatsApp
             </a>
             <a href="https://www.google.com/maps/search/?api=1&query=Vivero+Cactus+Borbollon+Mendoza" target="_blank" class="btn-maps">
                 <i class="fa-solid fa-map-location-dot"></i> Ver Ubicación en Google Maps
@@ -359,16 +387,17 @@
 
     <!-- MODAL PARA VER IMAGEN GRANDE (LIGHTBOX) -->
     <div class="modal" id="imageModal" onclick="closeModal('imageModal')">
-        <div style="text-align:center; max-width:90%; max-height:90vh; position:relative;">
-            <img id="expandedImg" src="" style="max-width:100%; max-height:85vh; border-radius:8px; box-shadow:0 10px 40px rgba(0,0,0,0.9); border: 2px solid var(--accent-gold);">
-            <p style="color: var(--text-secondary); margin-top: 12px; font-size: 0.9rem;"><i class="fa-solid fa-circle-xmark"></i> Tocá en cualquier lado para cerrar</p>
+        <div style="text-align:center; max-width:95%; max-height:95vh; position:relative;" onclick="event.stopPropagation()">
+            <span onclick="closeModal('imageModal')" style="position:absolute; top:-20px; right:-20px; background:var(--accent-gold); color:#000; width:38px; height:38px; border-radius:50%; display:flex; justify-content:center; align-items:center; font-weight:bold; cursor:pointer; font-size:1.3rem; box-shadow:0 4px 15px rgba(0,0,0,0.6);">×</span>
+            <img id="expandedImg" src="" style="max-width:100%; max-height:85vh; border-radius:10px; box-shadow:0 15px 50px rgba(0,0,0,0.9); border: 2px solid var(--accent-gold); object-fit: contain;">
+            <p style="color: var(--text-secondary); margin-top: 15px; font-size: 0.95rem;"><i class="fa-solid fa-magnifying-glass"></i> Tocá fuera de la imagen o la cruz para cerrar</p>
         </div>
     </div>
 
     <!-- MODAL DE LOGIN -->
     <div class="modal" id="loginModal">
         <div class="modal-content">
-            <h3 style="margin-bottom:15px; color:#fff;">Acceso Administrador</h3>
+            <h3 style="margin-bottom:18px; color:#fff; font-size: 1.3rem;">Acceso Administrador</h3>
             <div class="form-group">
                 <label>Contraseña:</label>
                 <input type="password" id="adminPassword" placeholder="Clave de administración">
@@ -383,7 +412,7 @@
     <!-- MODAL PRODUCTO -->
     <div class="modal" id="productModal">
         <div class="modal-content">
-            <h3 id="modalTitle" style="margin-bottom:15px; color:#fff;">Publicación</h3>
+            <h3 id="modalTitle" style="margin-bottom:18px; color:#fff; font-size: 1.3rem;">Publicación</h3>
             <input type="hidden" id="prodIndex">
             <div class="form-group">
                 <label>Título del producto:</label>
@@ -399,7 +428,7 @@
             </div>
             <div class="form-group">
                 <label>URLs de Fotos (separadas por coma para varios ángulos):</label>
-                <input type="text" id="prodImg" placeholder="https://i.postimg.cc/foto1.png, https://i.postimg.cc/foto2.png">
+                <input type="text" id="prodImg" placeholder="https://i.ibb.co/foto1.jpg, https://i.ibb.co/foto2.jpg">
             </div>
             <div class="form-buttons">
                 <button class="btn-save" onclick="saveProduct()">Guardar</button>
@@ -411,7 +440,7 @@
     <!-- MODAL EDITAR PASO DE PROCESO -->
     <div class="modal" id="processModal">
         <div class="modal-content">
-            <h3 style="margin-bottom:15px; color:#fff;">Editar Paso de Fabricación</h3>
+            <h3 style="margin-bottom:18px; color:#fff; font-size: 1.3rem;">Editar Paso de Fabricación</h3>
             <input type="hidden" id="processIndex">
             <div class="form-group">
                 <label>Título del Paso:</label>
@@ -422,7 +451,7 @@
                 <textarea id="processDesc" rows="3"></textarea>
             </div>
             <div class="form-group">
-                <label>URL de la Foto (Postimages Direct Link):</label>
+                <label>URL de la Foto:</label>
                 <input type="text" id="processImg">
             </div>
             <div class="form-buttons">
@@ -435,7 +464,7 @@
     <footer>
         <p><strong>Torrez - Herrería y Trabajos en Metal</strong> © 2026</p>
         <p>El Borbollón, Las Heras, Mendoza, Argentina</p>
-        <div style="margin-top:15px;">
+        <div style="margin-top:18px;">
             <a href="https://wa.me/5492617677108" target="_blank"><i class="fa-brands fa-whatsapp"></i> 261 767-7108</a>
             <a href="https://www.google.com/maps/search/?api=1&query=Vivero+Cactus+Borbollon+Mendoza" target="_blank"><i class="fa-solid fa-location-dot"></i> Ubicación Google Maps</a>
         </div>
@@ -450,7 +479,7 @@
             return localStorage.getItem('torrez_banner') || defaultBanner;
         }
         function aplicarBanner() {
-            document.getElementById('heroSection').style.backgroundImage = `linear-gradient(rgba(15, 17, 21, 0.7), rgba(15, 17, 21, 0.95)), url('${getBanner()}')`;
+            document.getElementById('heroSection').style.backgroundImage = `linear-gradient(rgba(11, 13, 16, 0.85), rgba(11, 13, 16, 0.95)), url('${getBanner()}')`;
         }
         aplicarBanner();
 
@@ -480,7 +509,7 @@
             { 
                 title: "Protección Anticorrosiva", 
                 desc: "Tratamiento con convertidor de óxido y pintura sintética para cuidar el metal del sol y la humedad del exterior.", 
-                img: "https://i.ibb.co/27q40NQ8/20261012-152434.jpg,https://i.ibb.co/27q40NQ8/20261012-152434.jpg,https://i.ibb.co/VYC83gwf/IMG-20261011-WA0022.jpg" 
+                img: "https://i.ibb.co/27q40NQ8/20261012-152434.jpg" 
             }
         ];
 
@@ -513,88 +542,92 @@
             });
         }
 
+        // Tus 13 productos completos y exactos
         const initialProducts = [
             { 
                 name: "Parrilla de Hierro Reforzada 60X40",
-             price: 40000, desc: "Construida en hierro macizo y caño estructural reforzado. Excelente disipación de calor y alta durabilidad.",
-             img: "https://i.ibb.co/Vcm0prCz/20261014-101301.jpg" 
+                price: 40000, 
+                desc: "Construida en hierro macizo y caño estructural reforzado. Excelente disipación de calor y alta durabilidad.",
+                img: "https://i.ibb.co/Vcm0prCz/20261014-101301.jpg" 
             },
             { 
                 name: "Porta Maceta Nórdico (3 Pies) N10",
-             price: 9000, desc: "Estructura metálica con tres apoyos estables. Tratamiento sintético rojo/blanco satinado.",
-             img: "https://i.ibb.co/qMZNxpkf/received-1062915786526454.jpg,https://i.ibb.co/b5LNKDKQ/received-2324787148333711.jpg,https://i.ibb.co/TBNCkH0Z/received-2085154365427616.jpg" 
+                price: 9000, 
+                desc: "Estructura metálica con tres apoyos estables. Tratamiento sintético rojo/blanco satinado.",
+                img: "https://i.ibb.co/qMZNxpkf/received-1062915786526454.jpg,https://i.ibb.co/b5LNKDKQ/received-2324787148333711.jpg,https://i.ibb.co/TBNCkH0Z/received-2085154365427616.jpg" 
             },
             { 
-                name: "parrilla estilo industrial 70X50",
-             price: 80000, desc: "PARRILLA PROFESIONAL DE ANGULO,HIERRO LISO Y METAL DESPLEGADO.",
-             img: "https://i.ibb.co/27RHcZhY/8429b61ed4c705bbb773157a98c48199.jpg" 
+                name: "Parrilla Estilo Industrial 70X50",
+                price: 80000, 
+                desc: "Parrilla profesional de ángulo, hierro liso y metal desplegado.",
+                img: "https://i.ibb.co/27RHcZhY/8429b61ed4c705bbb773157a98c48199.jpg" 
             },
-          {
-        name: "Carretilla Grande para 3 Macetas (N°17)", 
-        price: 34999, 
-        desc: "Porta macetas grande en hierro aletado reforzado con espacio para 3 plantas Nª17, de 1 m de largo. Pintura anticorrosiva satinada.", 
-        img: "https://i.ibb.co/8Lb9TwhS/20261014-101322.jpg,https://i.ibb.co/xS5bDz1T/20261014-101317.jpg" 
-    },
-    { 
-        name: "Perchero de Pie Industrial (1,80 m)", 
-        price: 45000, 
-        desc: "Perchero alto de gran estabilidad fabricado en hierro liso macizo de 12 mm. Soporta camperas pesadas sin vencerse.", 
-        img: "https://i.ibb.co/9HDdw7Yt/70db3c39d18c04d4ba7a653d398c40ce.jpg" 
-    },
-    { 
-        name: "Torre Vertical para 6 Macetas Nª15 (1,70 m)", 
-        price: 60000, 
-        desc: "Estructura vertical de gran altura para 6 macetas N°15. Aprovecha el espacio a lo alto para lucir plantas.", 
-        img: "https://i.ibb.co/WvgfFFpm/29d579be05cdac4e0e33d62036143b52.jpg" 
-    },
-    { 
-        name: "Brasero Reforzado 40x30 cm (Hierro del 8/10)", 
-        price: 34999, 
-        desc: "Brasero para leña con hierro macizo del 8 y malla desplegada gruesa. Gran resistencia al calor directo.", 
-        img: "https://i.ibb.co/xqfYSp3T/1729f4b6d6a54b55f08ceeedfa373072.jpg" 
-    },
-    { 
-        name: "Porta Maceta Figura Gato (N°12)", 
-        price: 24999, 
-        desc: "Soporte artesanal de pared en hierro con diseño de gato. Trae 2 aros para macetas N°12.", 
-        img: "https://i.ibb.co/jPCnqGV5/20261009-202607.jpg" 
-    },
-    { 
-        name: "Mini Triciclo para 3 Macetas (N°10)", 
-        price: 11999, 
-        desc: "Soporte artesanal con curvas en hierro para 3 macetas chicas. Terminación sintética contra el sol y la lluvia.", 
-        img: "https://i.ibb.co/TD6hVhcG/20261014-101352.jpg" 
-    },
-    { 
-        name: "Perchero / Llavero Casita (6 Ganchos)", 
-        price: 11999, 
-        desc: "Organizador de pared en hierro aletado con 6 ganchos firmes para llaves o trapos de cocina.", 
-        img: "https://i.ibb.co/S4dJWzfm/IMG-20261010-WA0068.jpg" 
-    },
-    { 
-        name: "Porta Maceta Flotante para centro de mesa (N°10)", 
-        price: 10999, 
-        desc: "Soporte individual de hierro Nª4 con acabado anticorrosivo.", 
-        img: "https://i.ibb.co/PsLw5YkJ/20261009-204354.jpg,https://i.ibb.co/8ndHDg2T/20260927-155907.jpg,https://i.ibb.co/PZ9snzPx/20260919-224602.jpg" 
-    },
-             { 
-        name: "Porta macetas de 3 macetas Nª10", 
-        price: 12999, 
-        desc: "Soporte de hierro para decorar jardines con acabado anticorrosivo.", 
-        img: "https://i.ibb.co/ZpCM5YYQ/20261009-204754.jpg" 
-    },
-              { 
-        name: "Porta Maceta de pared para macetas (N°12,14,15)", 
-        price: 13999, 
-        desc: "Soporte individual de hierro para colgar macetas medianas en paredes o galerías con acabado anticorrosivo.", 
-        img: "https://i.ibb.co/h1gmK3YW/20261009-203651.jpg" 
-    },
-              { 
-        name: "Porta Maceta tipo canasto para rejas macetas (N°8 o 10)", 
-        price:21999, 
-        desc: "Soporte tipo canasta de hierro para colocar macetas chicas en rejas con acabado anticorrosivo.", 
-        img: "https://i.ibb.co/7JYNfPR2/IMG-20260918-WA0125.jpg,https://i.ibb.co/7JFkQfdz/IMG-20260918-WA0123.jpg" 
-    },
+            {
+                name: "Carretilla Grande para 3 Macetas (N°17)", 
+                price: 34999, 
+                desc: "Porta macetas grande en hierro aletado reforzado con espacio para 3 plantas Nª17, de 1 m de largo. Pintura anticorrosiva satinada.", 
+                img: "https://i.ibb.co/8Lb9TwhS/20261014-101322.jpg,https://i.ibb.co/xS5bDz1T/20261014-101317.jpg" 
+            },
+            { 
+                name: "Perchero de Pie Industrial (1,80 m)", 
+                price: 45000, 
+                desc: "Perchero alto de gran estabilidad fabricado en hierro liso macizo de 12 mm. Soporta camperas pesadas sin vencerse.", 
+                img: "https://i.ibb.co/9HDdw7Yt/70db3c39d18c04d4ba7a653d398c40ce.jpg" 
+            },
+            { 
+                name: "Torre Vertical para 6 Macetas Nª15 (1,70 m)", 
+                price: 60000, 
+                desc: "Estructura vertical de gran altura para 6 macetas N°15. Aprovecha el espacio a lo alto para lucir plantas.", 
+                img: "https://i.ibb.co/WvgfFFpm/29d579be05cdac4e0e33d62036143b52.jpg" 
+            },
+            { 
+                name: "Brasero Reforzado 40x30 cm (Hierro del 8/10)", 
+                price: 34999, 
+                desc: "Brasero para leña con hierro macizo del 8 y malla desplegada gruesa. Gran resistencia al calor directo.", 
+                img: "https://i.ibb.co/xqfYSp3T/1729f4b6d6a54b55f08ceeedfa373072.jpg" 
+            },
+            { 
+                name: "Porta Maceta Figura Gato (N°12)", 
+                price: 24999, 
+                desc: "Soporte artesanal de pared en hierro con diseño de gato. Trae 2 aros para macetas N°12.", 
+                img: "https://i.ibb.co/jPCnqGV5/20261009-202607.jpg" 
+            },
+            { 
+                name: "Mini Triciclo para 3 Macetas (N°10)", 
+                price: 11999, 
+                desc: "Soporte artesanal con curvas en hierro para 3 macetas chicas. Terminación sintética contra el sol y la lluvia.", 
+                img: "https://i.ibb.co/TD6hVhcG/20261014-101352.jpg" 
+            },
+            { 
+                name: "Perchero / Llavero Casita (6 Ganchos)", 
+                price: 11999, 
+                desc: "Organizador de pared en hierro aletado con 6 ganchos firmes para llaves o trapos de cocina.", 
+                img: "https://i.ibb.co/S4dJWzfm/IMG-20261010-WA0068.jpg" 
+            },
+            { 
+                name: "Porta Maceta Flotante para centro de mesa (N°10)", 
+                price: 10999, 
+                desc: "Soporte individual de hierro Nª4 con acabado anticorrosivo.", 
+                img: "https://i.ibb.co/PsLw5YkJ/20261009-204354.jpg,https://i.ibb.co/8ndHDg2T/20260927-155907.jpg,https://i.ibb.co/PZ9snzPx/20260919-224602.jpg" 
+            },
+            { 
+                name: "Porta macetas de 3 macetas Nª10", 
+                price: 12999, 
+                desc: "Soporte de hierro para decorar jardines con acabado anticorrosivo.", 
+                img: "https://i.ibb.co/ZpCM5YYQ/20261009-204754.jpg" 
+            },
+            { 
+                name: "Porta Maceta de pared para macetas (N°12,14,15)", 
+                price: 13999, 
+                desc: "Soporte individual de hierro para colgar macetas medianas en paredes o galerías con acabado anticorrosivo.", 
+                img: "https://i.ibb.co/h1gmK3YW/20261009-203651.jpg" 
+            },
+            { 
+                name: "Porta Maceta tipo canasto para rejas macetas (N°8 o 10)", 
+                price: 21999, 
+                desc: "Soporte tipo canasta de hierro para colocar macetas chicas en rejas con acabado anticorrosivo.", 
+                img: "https://i.ibb.co/7JYNfPR2/IMG-20260918-WA0125.jpg,https://i.ibb.co/7JFkQfdz/IMG-20260918-WA0123.jpg" 
+            }
         ];
 
         function getProducts() {
@@ -630,9 +663,11 @@
                                 <p>${prod.desc}</p>
                             </div>
                             <div>
-                                <div class="price-tag">$${Number(prod.price).toLocaleString('es-AR')}</div>
+                                <div class="price-row">
+                                    <div class="price-tag">$${Number(prod.price).toLocaleString('es-AR')}</div>
+                                </div>
                                 <a href="https://wa.me/${phone}?text=${wsMessage}" target="_blank" class="btn-wssp-card">
-                                    <i class="fa-brands fa-whatsapp"></i> Consultar Presupuesto
+                                    <i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i> Consultar Presupuesto
                                 </a>
                             </div>
                             ${isAdmin ? `
